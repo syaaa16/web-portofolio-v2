@@ -1,55 +1,258 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; color: #343a40; line-height: 1.6; padding-top: 60px; } /* Tambah padding atas agar konten tidak tertutup fixed navbar */
-        
-        /* Navbar Dibuat FIXED */
-        .navbar { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background-color: #ffffff; 
-            padding: 18px 50px; 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
-            position: fixed; /* Diubah dari sticky menjadi fixed */
-            top: 0; 
-            width: 100%; /* Agar memenuhi lebar penuh */
-            z-index: 1000; 
-        }
-        .logo { font-size: 1.6em; font-weight: 700; color: #007bff; text-decoration: none; }
-        .nav-links { list-style: none; display: flex; }
-        .nav-links li { margin-left: 30px; }
-        .nav-links a { color: #343a40; text-decoration: none; font-weight: 600; padding: 5px 0; transition: color 0.3s, border-bottom 0.3s; border-bottom: 2px solid transparent; }
-        .nav-links a:hover, .nav-links a.active { color: #007bff; border-bottom: 2px solid #007bff; }
-        
-        /* About Me */
-        .about-section { padding: 80px 50px; max-width: 1000px; margin: 0 auto; display: flex; gap: 40px; align-items: center; }
-        .profile-photo { width: 250px; height: 250px; object-fit: cover; border-radius: 50%; border: 6px solid #ffffff; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
-        .about-content { flex: 2; }
-        .about-content h1 { font-size: 2.5em; color: #212529; margin-bottom: 5px; }
-        .about-content h3 { font-size: 1.2em; color: #6c757d; margin-bottom: 20px; }
-        .about-content p { font-size: 1em; margin-bottom: 15px; color: #495057; }
-        .skill-list { list-style: none; display: flex; flex-wrap: wrap; margin-top: 20px; }
-        .skill-list li { background-color: #e9ecef; color: #495057; padding: 6px 12px; border-radius: 15px; margin: 4px; font-size: 0.85em; font-weight: 600; }
-        /* Project Gallery Sederhana */
-        .project-gallery-section { padding: 50px 50px; max-width: 1000px; margin: 0 auto; }
-        .project-gallery-section h2 { font-size: 2em; color: #212529; text-align: center; margin-bottom: 30px; }
-        .project-item { display: flex; background-color: #ffffff; margin-bottom: 15px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); align-items: center; }
-        .project-thumbnail { width: 120px; height: 80px; object-fit: cover; border-radius: 4px; margin-right: 15px; background-color: #adb5bd; }
-        .project-details h3 { color: #007bff; font-size: 1.2em; margin-bottom: 3px; }
-        .project-details p { font-size: 0.9em; color: #6c757d; margin-bottom: 5px; }
-        /* Link Project (dihapus sebelumnya, saya kembalikan) */
-        .project-links a { color: #007bff; text-decoration: none; font-weight: 600; margin-right: 15px; font-size: 0.9em; }
-        
-        .contact-footer { background-color: #343a40; color: #f8f9fa; padding: 30px 50px; text-align: center; }
-        .contact-footer h2 { font-size: 1.8em; margin-bottom: 15px; }
-        .social-links a { color: #ffffff; font-size: 1.4em; margin: 0 8px; }
-        /* Media Queries Ringkas */
-        @media (max-width: 768px) {
-            body { padding-top: 55px; } /* Sesuaikan padding untuk mobile */
-            .navbar { padding: 15px 20px; }
-            .nav-links { display: none; }
-            .about-section { flex-direction: column; text-align: center; padding: 40px 20px; }
-            .profile-photo { width: 150px; height: 150px; margin-bottom: 20px; }
-            .about-content h1 { font-size: 2em; }
-            .project-item { flex-direction: column; text-align: center; }
-            .project-thumbnail { margin: 0 0 10px 0; width: 100%; height: auto; }
-        }
+/*
+========================================
+Global Reset & Body Styling
+========================================
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.6;
+    /* Tambah padding atas agar konten tidak tertutup fixed navbar */
+    padding-top: 60px;
+}
+
+/*
+========================================
+Navbar (Fixed)
+========================================
+*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 18px 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* Dibuat FIXED */
+    position: fixed;
+    top: 0;
+    width: 100%; /* Agar memenuhi lebar penuh */
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: #343a40;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 5px 0;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+/*
+========================================
+About Me Section
+========================================
+*/
+.about-section {
+    padding: 80px 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.profile-photo {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid #ffffff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-content {
+    flex: 2;
+}
+
+.about-content h1 {
+    font-size: 2.5em;
+    color: #212529;
+    margin-bottom: 5px;
+}
+
+.about-content h3 {
+    font-size: 1.2em;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: #495057;
+}
+
+.skill-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.skill-list li {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 6px 12px;
+    border-radius: 15px;
+    margin: 4px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+/*
+========================================
+Project Gallery Section
+========================================
+*/
+.project-gallery-section {
+    padding: 50px 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.project-gallery-section h2 {
+    font-size: 2em;
+    color: #212529;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.project-item {
+    display: flex;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    align-items: center;
+}
+
+.project-thumbnail {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+    background-color: #adb5bd; /* Placeholder/Fallback color */
+}
+
+.project-details h3 {
+    color: #007bff;
+    font-size: 1.2em;
+    margin-bottom: 3px;
+}
+
+.project-details p {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.project-links a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 15px;
+    font-size: 0.9em;
+}
+
+/*
+========================================
+Contact Footer
+========================================
+*/
+.contact-footer {
+    background-color: #343a40;
+    color: #f8f9fa;
+    padding: 30px 50px;
+    text-align: center;
+}
+
+.contact-footer h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.social-links a {
+    color: #ffffff;
+    font-size: 1.4em;
+    margin: 0 8px;
+}
+
+/*
+========================================
+Media Queries (Responsiveness)
+========================================
+*/
+@media (max-width: 768px) {
+    body {
+        /* Sesuaikan padding untuk mobile */
+        padding-top: 55px;
+    }
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    /* Sembunyikan Nav Links untuk mobile, biasanya diganti menu hamburger (belum ada di HTML) */
+    .nav-links {
+        display: none;
+    }
+
+    .about-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 20px;
+    }
+
+    .about-content h1 {
+        font-size: 2em;
+    }
+
+    .project-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-thumbnail {
+        margin: 0 0 10px 0;
+        width: 100%;
+        height: auto;
+    }
+}
