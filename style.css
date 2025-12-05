@@ -20,6 +20,63 @@ body {
 
 /*
 ========================================
+Dark Mode Overrides
+========================================
+*/
+.darkmode {
+    background-color: black;
+    color: #f8f9fa; /* Warna teks utama menjadi putih/terang */
+}
+
+/* Mengubah warna teks H1 dan H3 saat dark mode */
+.darkmode h1,
+.darkmode h3,
+.darkmode h2 { 
+    color: white !important; /* Tambahkan !important jika perlu, meskipun biasanya tidak */
+}
+
+/* Mengubah background Navbar (yang awalnya putih) menjadi gelap */
+.darkmode .navbar {
+    background-color: #212529; /* Warna gelap untuk navbar */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); /* Ubah shadow agar terlihat di latar belakang gelap */
+}
+
+/* Mengubah tautan di navbar */
+.darkmode .nav-links a {
+    color: #ced4da; /* Warna link menjadi lebih terang */
+}
+
+/* Mengubah latar belakang Project Item (yang awalnya putih) menjadi gelap */
+.darkmode .project-item {
+    background-color: #343a40; /* Warna gelap untuk item proyek */
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Mengubah list skill (yang awalnya abu-abu terang) menjadi gelap */
+.darkmode .skill-list li {
+    background-color: #495057; /* Warna gelap untuk skill tag */
+    color: #f8f9fa;
+}
+
+/* Mengubah warna teks detail proyek agar terlihat */
+.darkmode .project-details p {
+    color: #ced4da; /* Warna teks deskripsi proyek */
+}
+
+/* Mengubah elemen di About Section yang punya warna spesifik */
+.darkmode .about-content h1 {
+    color: white !important; /* Menimpa warna H1 */
+}
+
+.darkmode .about-content h3 {
+    color: #adb5bd !important; /* Menimpa warna H3 */
+}
+
+.darkmode .about-content p {
+    color: #ced4da; /* Menimpa warna paragraf */
+}
+/*
+========================================
 Navbar (Fixed)
 ========================================
 */
@@ -147,45 +204,88 @@ Project Gallery Section
     margin-bottom: 30px;
 }
 
+/* WADAH BARU UNTUK KARTU (CARD) */
+.projects-container {
+    display: grid;
+    /* Membuat 3 kolom dengan ukuran yang sama */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; /* Jarak antar kartu */
+}
+
 .project-item {
-    display: flex;
+    /* Menghilangkan flex karena sudah diatur oleh grid container */
+    /* display: flex; <--- Dihapus */
+    flex-direction: column; /* Mengatur konten di dalam kartu vertikal */
+    text-align: center; /* Teks di tengah */
     background-color: #ffffff;
-    margin-bottom: 15px;
-    padding: 15px;
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* align-items: center; <--- Dihapus */
+}
+
+.project-item:hover {
+    transform: translateY(-5px); /* Efek hover minor */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .project-thumbnail {
-    width: 120px;
-    height: 80px;
+    width: 100%; /* Memenuhi lebar card */
+    height: 150px; /* Tinggi tetap untuk thumbnail */
     object-fit: cover;
     border-radius: 4px;
-    margin-right: 15px;
+    margin-bottom: 15px;
     background-color: #adb5bd; /* Placeholder/Fallback color */
+    /* margin-right: 15px; <--- Dihapus */
+}
+
+.project-details {
+    /* Membuat project-details memenuhi ruang yang tersisa jika perlu */
+    flex-grow: 1;
 }
 
 .project-details h3 {
     color: #007bff;
     font-size: 1.2em;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .project-details p {
     font-size: 0.9em;
     color: #6c757d;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
-.project-links a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 600;
-    margin-right: 15px;
-    font-size: 0.9em;
+/* Penyesuaian Dark Mode untuk Project Card */
+.darkmode .project-item {
+    background-color: #343a40; 
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
+.darkmode .project-item:hover {
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* ... Sisa CSS Anda (Navbar, About, Footer, Media Queries) ... */
+
+@media (max-width: 768px) {
+    /* ... bagian lain di media query ... */
+    
+    /* Penyesuaian untuk tampilan card di mobile */
+    .projects-container {
+        /* Di layar kecil, kartu akan disusun 1 kolom */
+        grid-template-columns: 1fr;
+    }
+    
+    .project-item {
+        /* Tidak perlu diubah lagi karena sudah diatur oleh projects-container */
+    }
+
+    .project-thumbnail {
+        margin: 0 auto 10px auto; /* Kembali ke auto margin untuk tengah */
+    }
+}
 /*
 ========================================
 Contact Footer
@@ -256,3 +356,4 @@ Media Queries (Responsiveness)
         height: auto;
     }
 }
+
